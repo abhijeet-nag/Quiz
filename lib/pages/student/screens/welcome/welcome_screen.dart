@@ -7,10 +7,15 @@ import '../../../../constants.dart';
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    TextEditingController _textEditingController = TextEditingController();
+
     return Scaffold(
       body: Stack(
         children: [
-          SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.fill),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.cover),
+          ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -23,12 +28,16 @@ class WelcomeScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline4!.copyWith(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-                  Text("Enter your informations below"),
+                  Text(
+                    "Enter your informations below",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   Spacer(), // 1/6
                   TextField(
+                    controller: _textEditingController,
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFF1C2341),
+                      fillColor: Colors.white,
                       hintText: "Full Name",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -37,7 +46,12 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   Spacer(), // 1/6
                   InkWell(
-                    onTap: () => Get.to(QuizScreen()),
+                    onTap: () {
+                      _textEditingController == null
+                          ? Get.snackbar(
+                              "Important", "Please Enter your Full Name")
+                          : Get.to(QuizScreen());
+                    },
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,

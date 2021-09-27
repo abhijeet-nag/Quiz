@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz/pages/student/screens/welcome/welcome_screen.dart';
 import 'package:quiz/pages/teacher/courses.dart';
+import 'package:quiz/pages/teacher/working.dart';
 
 class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -33,7 +35,9 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.all(20),
                     child: Text("LOGIN AS A STUDENT",
                         style: TextStyle(color: Colors.white)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(WelcomeScreen());
+                    },
                     color: Colors.deepOrangeAccent,
                   ),
                   SizedBox(
@@ -46,7 +50,7 @@ class HomePage extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () {
-                      Get.to(Courses());
+                      Get.to(Work());
                     },
                     color: Colors.deepOrangeAccent,
                   ),

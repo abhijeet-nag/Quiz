@@ -13,7 +13,7 @@ class _CoursesState extends State<Courses> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.grey,
+        color: Colors.white,
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
